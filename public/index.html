@@ -1,0 +1,106 @@
+<html>
+  <head>
+    <title>Auth Test API</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cutive+Mono&family=Nunito:ital,wght@0,400;0,800;1,600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        padding: 0 1%;
+        background-color: #f1fffa;
+        font-family: 'Nunito', sans-serif;
+
+        font-size: 1.2rem;
+      }
+
+      div {
+        display: grid;
+        grid-template-columns: 1fr 3fr;
+      }
+
+      h2 {
+        margin-bottom: 5px;
+      }
+
+      h1 {
+        font-family: 'Cutive Mono', monospace;
+        font-size: 2.7rem;
+      }
+
+      span {
+        font-weight: 800;
+      }
+
+      h3 {
+        font-weight: 400;
+        font-size: 1.5rem;
+        color: #7900ff;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Welcome to the Payment API -- powered by Paystack</h1>
+    <h2><u>API Endpoints:</u></h2>
+
+    <div>
+      <h3><span>POST</span> /initiate-transaction</h3>
+      <p>
+        <strong>Initiates a transaction</strong> -> Expects a body with email
+        and amount (as application/json)
+        <code>{"email": $email, "amount": $amount} </code>
+        and Authorization header with Bearer token
+        <code>Authorization: Bearer $token</code>
+      </p>
+      <a href="https://paystack.com/docs/api/#transaction-initialize">Docs</a>
+
+      <h3><span>POST</span> /auth/login</h3>
+      <p>
+        <strong>Authenticates an existing user</strong> -> Expects a username
+        and password in the body of the request
+        <code>{"username":$username, "password":$password} </code> and returns a
+        response with an auth token in the headers
+      </p>
+      <h3><span>GET</span> /users</h3>
+      <p>
+        <strong
+          >Returns all users in the database* (*Admin rights required)</strong
+        >
+        -> Expects an Admin token in the headers
+        <code>Authorization: Bearer $token</code>
+      </p>
+      <h3><span>DELETE</span> /users</h3>
+      <p>
+        <strong
+          >Delete all users from the database* (*Admin rights required)</strong
+        >
+        -> Expects an Admin token in the headers
+        <code>Authorization: Bearer $token</code>
+      </p>
+      <h3><span>GET</span> /users/me</h3>
+      <p>
+        <strong>Returns information about the user making the request</strong>
+        -> Expects an auth token in the headers
+        <code>Authorization: Bearer $token</code>
+      </p>
+      <h3><span>PATCH</span> /users/me</h3>
+      <p>
+        <strong>Updates fields of user making the request</strong> -> Expects a
+        body containing the fields the user wants to update and an auth token in
+        the headers <code>Authorization: Bearer $token</code>
+      </p>
+      <h3><span>DELETE</span> /users/me</h3>
+      <p>
+        <strong>Deletes the user making the request</strong> -> Expects an auth
+        token in the headers <code>Authorization: Bearer $token</code>
+      </p>
+    </div>
+    <form method="POST" action="/users/register" enctype="multipart/form-data">
+      <input type="file" name="profile_pic" /><button>send</button>
+    </form>
+  </body>
+</html>
+Footer © 2022 GitHub, Inc.
